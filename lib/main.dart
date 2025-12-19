@@ -5,10 +5,10 @@ void main() {
     home: Scaffold(
       backgroundColor: Colors.indigo,
       appBar: AppBar(
-        title: Text(' صورة'),
+        title: Text(' stateless widgets'),
         backgroundColor: Colors.indigo[800],
       ),
-      body: TwoButtons()
+      body: Row(mainAxisAlignment:MainAxisAlignment.center,children:[Text(' stateless widgetss'),SizedBox(width:20)])
     ),
   ));
 }
@@ -23,16 +23,25 @@ class TwoButtons extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Padding(padding: EdgeInsetsGeometry.fromLTRB(5, 5, 10, 5),
+        child:
         ElevatedButton(
-
-        onPressed: () {  }, child: Text('Elevated Button'),
-          ),
-        ElevatedButton(
-          onPressed: () {  }, child: Text('Elevated Button'),
+        onPressed: () {  },
+        child: Text('Elevated Button',
+               style: TextStyle(fontSize: 12),)
         ),
-      ],
+        
+    ),
+        Padding(padding: EdgeInsetsGeometry.fromLTRB(5, 5, 10, 5),
+            child:
+            ElevatedButton(
+              /*style: ButtonStyle(elevation: Elevat),*/
+              onPressed: () {  }, child: Text('Elevated Button', style: TextStyle(fontSize: 12),),
+            ))
+          ],
     );
   }
 
