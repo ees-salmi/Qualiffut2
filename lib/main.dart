@@ -8,7 +8,7 @@ void main() {
         title: Text(' stateless widgets'),
         backgroundColor: Colors.indigo[800],
       ),
-      body: Row(mainAxisAlignment:MainAxisAlignment.center,children:[Text(' stateless widgetss'),SizedBox(width:20)])
+      body: TwoButtons()
     ),
   ));
 }
