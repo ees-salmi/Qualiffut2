@@ -7,7 +7,7 @@ void main() {
         title: Text('Exemple Stateful Widget'),
         backgroundColor: Colors.pink[100]),
 
-      body : Compteur(),
+      body : ToggleButtonText(),
     ),
     )
   );
@@ -19,24 +19,50 @@ class ToggleButtonText extends StatefulWidget {
 }
 
 class _ToggleButtonTextState extends State<ToggleButtonText> {
-  String _texte = "Clique-moi";
 
-  void _changerTexte() {
-    setState(() {
-      _texte = (_texte == "Clique-moi") ? "Merci !" : "Clique-moi";
-    });
+  String _nom = "";
+  String _prenom = "";
+
+  void _afficher(){
+    print(_nom + " "+ _prenom);
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Center(
-      child: ElevatedButton(
-        onPressed: _changerTexte,
-        child: Text(_texte),
-      ),
+      child: Column(
+        children: [
+          Container(padding: EdgeInsetsGeometry.all(10),
+            child:TextField(
+              onChanged: (String val){setState(() {
+            _nom = val ;
+            });},
+            ) ,),
+          SizedBox(height: 10,),
+          Container(padding: EdgeInsetsGeometry.all(10),
+            child:TextField(
+            onChanged: (String val){setState(() {
+              _prenom = val ;
+            });},
+          ) ,),
+          ElevatedButton(onPressed: _afficher, child: Text("afficher"))
+        ],
+      )
+      ,
     );
+
   }
 }
+
+
+
+
+
+
+
+
+
 
 class Compteur extends StatefulWidget {
   @override
