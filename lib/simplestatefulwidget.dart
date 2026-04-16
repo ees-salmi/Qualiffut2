@@ -22,14 +22,25 @@ class _ToggleButtonTextState extends State<ToggleButtonText> {
 
   String _nom = "";
   String _prenom = "";
+  bool _estInscri = false ;
+  bool _estNonInscri = false ;
 
   void _afficher(){
     print(_nom + " "+ _prenom);
+    if(_estInscri){
+      print("déja inscri");
+    }
+    else if(_estNonInscri){
+      print("nouvelle inscription");
+    }
+    else {
+      print("vous n avez pas choisi inscri ou non");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-
+    double wid = MediaQuery.of(context).size.height;
     return Center(
       child: Column(
         children: [
@@ -46,7 +57,22 @@ class _ToggleButtonTextState extends State<ToggleButtonText> {
               _prenom = val ;
             });},
           ) ,),
-          ElevatedButton(onPressed: _afficher, child: Text("afficher"))
+          ElevatedButton(onPressed: _afficher, child: Text("afficher")),
+          Row(mainAxisAlignment: MainAxisAlignment.center ,children: [
+            Checkbox(value: _estInscri, onChanged: (bool? nouv){
+              setState(() {
+                _estInscri = nouv! ;
+              });
+            } ),
+            Text("déja inscri"),
+            SizedBox(width: 40),
+            Checkbox(value: _estNonInscri, onChanged: (bool? nouv){
+              setState(() {
+                _estNonInscri = nouv! ;
+              });
+            } ),
+            Text("nouvelle inscription")
+          ],)
         ],
       )
       ,
