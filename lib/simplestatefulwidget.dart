@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertest/stateful.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -37,6 +38,7 @@ class _ToggleButtonTextState extends State<ToggleButtonText> {
       print("vous n avez pas choisi inscri ou non");
     }
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,16 @@ class _ToggleButtonTextState extends State<ToggleButtonText> {
               });
             } ),
             Text("nouvelle inscription")
-          ],)
+          ],),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  CompteurApp()),
+                );
+              },
+              child: Text("naviger")),
+
         ],
       )
       ,
